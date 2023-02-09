@@ -22,5 +22,5 @@ model Game {
 model Console {
   id    Int    @id @default(autoincrement())
   name  String @unique
-  games Game[]
+  Games Game[]
 }

@@ -4,8 +4,14 @@ import httpStatus from "http-status";
 import gamesService, { GameInput } from "../services/games-service";
 
 export async function getGames(req: Request, res: Response) {
-  const games = await gamesService.getGames();
-  res.send(games);
+  try {
+    const games = await gamesService.getGames();
+    res.send(games);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
+  }
+  
 }
 
 export async function getSpecificGame(req: Request, res: Response) {
